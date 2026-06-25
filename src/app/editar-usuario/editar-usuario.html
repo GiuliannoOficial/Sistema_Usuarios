@@ -1,0 +1,83 @@
+<div class="min-h-screen bg-gray-50 px-4 py-10 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-3xl">
+    <div class="mb-8">
+      <h1 class="text-2xl font-bold text-gray-900">Editar usuário</h1>
+      <p class="mt-2 text-sm text-gray-600">
+        Visualização dos dados do usuário selecionado. A edição será implementada em uma etapa futura.
+      </p>
+    </div>
+
+    <div class="rounded-lg bg-white p-6 shadow-sm ring-1 ring-gray-200">
+      @if (carregando) {
+        <p class="text-sm text-gray-500">Carregando dados do usuário...</p>
+      } @else if (mensagemErro) {
+        <div class="rounded-md bg-red-50 p-4 text-sm text-red-700 ring-1 ring-red-200">
+          {{ mensagemErro }}
+        </div>
+
+        <div class="mt-6 flex justify-end">
+          <button
+            type="button"
+            (click)="voltar()"
+            class="rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50"
+          >
+            Voltar
+          </button>
+        </div>
+      } @else if (usuario) {
+        <form class="space-y-6">
+          <div>
+            <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
+            <input
+              id="id"
+              type="text"
+              [value]="usuario.id"
+              readonly
+              class="mt-2 block w-full rounded-md border border-gray-300 bg-gray-100 px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
+            <input
+              id="nome"
+              type="text"
+              [value]="usuario.nome"
+              readonly
+              class="mt-2 block w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              id="email"
+              type="email"
+              [value]="usuario.email"
+              readonly
+              class="mt-2 block w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            />
+          </div>
+
+          <div class="flex justify-end gap-3 pt-4">
+            <button
+              type="button"
+              (click)="voltar()"
+              class="rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-gray-300 hover:bg-gray-50"
+            >
+              Voltar
+            </button>
+
+            <button
+              type="button"
+              disabled
+              class="cursor-not-allowed rounded-md bg-gray-300 px-4 py-2 text-sm font-semibold text-gray-500 shadow-sm"
+            >
+              Salvar
+            </button>
+          </div>
+        </form>
+      }
+    </div>
+  </div>
+</div>
